@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IPL Sports Analytics Platform — Live win probability, player insights, venue heatmaps, and head-to-head comparisons powered by ML.">
+    <title>IPL Sports Analytics | Cricket Intelligence Platform</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏏</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">🏏</span>
+                <span class="logo-text">IPL Analytics</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link active" data-page="simulator" id="nav-simulator">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-label">Match Simulator</span>
+            </a>
+            <a href="#" class="nav-link" data-page="players" id="nav-players">
+                <span class="nav-icon">🏅</span>
+                <span class="nav-label">Player Dashboard</span>
+            </a>
+            <a href="#" class="nav-link" data-page="venues" id="nav-venues">
+                <span class="nav-icon">🏟️</span>
+                <span class="nav-label">Venue Heatmap</span>
+            </a>
+            <a href="#" class="nav-link" data-page="headtohead" id="nav-headtohead">
+                <span class="nav-icon">⚔️</span>
+                <span class="nav-label">Head-to-Head</span>
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <div class="model-status" id="model-status">
+                <span class="status-dot"></span>
+                <span class="status-text">Loading models...</span>
+            </div>
+            <p class="sidebar-credit">Powered by ML • XGBoost & Random Forest</p>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Page: Live Match Simulator -->
+        <section class="page active" id="page-simulator"></section>
+
+        <!-- Page: Player Performance -->
+        <section class="page" id="page-players"></section>
+
+        <!-- Page: Venue Heatmap -->
+        <section class="page" id="page-venues"></section>
+
+        <!-- Page: Head-to-Head -->
+        <section class="page" id="page-headtohead"></section>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/simulator.js"></script>
+    <script src="/static/js/players.js"></script>
+    <script src="/static/js/venues.js"></script>
+    <script src="/static/js/headtohead.js"></script>
+</body>
+</html>

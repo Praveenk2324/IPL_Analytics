@@ -1,3 +1,7 @@
 models/*
 *.joblib
 .agents/*
+data/processed/
+__pycache__/
+*.pyc
+src/__pycache__/
