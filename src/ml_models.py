@@ -21,41 +21,21 @@ from sklearn.metrics import (
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 import joblib
 import os
-
-try:
-    from xgboost import XGBClassifier
-    HAS_XGBOOST = True
-except ImportError:
-    HAS_XGBOOST = False
-    print("WARNING: xgboost not installed. XGBoost model will be skipped.")
-
+from xgboost import XGBClassifier
 
 # ===================================================================
 # Feature Preparation
 # ===================================================================
 
 def prepare_match_level_features(matches: pd.DataFrame) -> tuple:
-    """Prepare match-level features for Logistic Regression.
-
-    Features: venue, toss_decision, team1, team2, first_innings_score, toss_win_is_match_win
-    Target: did batting_first_team win? (binary)
-
-    Returns
-    -------
-    tuple
-        (X_df, y_series, encoders_dict)
-    """
     df = matches[matches["winner"] != "No Result"].copy()
 
-    # Need batting_first_team and first_innings_score
     required = ["venue", "toss_decision", "batting_first_team",
                  "batting_second_team", "first_innings_score", "winner"]
     df = df.dropna(subset=[c for c in required if c in df.columns])
 
-    # Target: did the team batting first win?
     df["batting_first_won"] = (df["winner"] == df["batting_first_team"]).astype(int)
 
-    # Encode categoricals
     encoders = {}
     cat_cols = ["venue", "toss_decision", "batting_first_team", "batting_second_team"]
     for col in cat_cols:
